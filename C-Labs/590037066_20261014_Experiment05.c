@@ -8,46 +8,47 @@ Requirements:
 
 #include <stdio.h>
 
-int a[100];
+void readArray(int arr[], int n)
+{
+    for (int i = 0; i < n; i++)
+    {
+        scanf("%d", &arr[i]);
+    }
+}
 
-void readArray(int n) {
-    printf("Enter %d elements: ",n);
+int calculateSum(int arr[], int n)
+{
+    int sum = 0;
 
     for (int i = 0; i < n; i++)
     {
-        scanf("%d",&a[i]);
-    }
-    
-}
-
-int calculateSum(int n) {
-    int i, sum = 0;
-
-    for (int i = 0; i < n; i++)
-    {
-        sum += a[i];
+        sum = sum + arr[i];
     }
 
-return sum;   
+    return sum;
 }
 
-float calculateAverage(int sum, int n) {
+float calculateAverage(int sum, int n)
+{
     return (float)sum / n;
 }
 
-int main() {
-    int n,sum;
+int main()
+{
+    int arr[100], n, sum;
     float average;
 
-    printf("Number of elements: ");
-    scanf("%d",&n);
+    printf("Enter number of elements: ");
+    scanf("%d", &n);
 
-    readArray(n);
-    sum = calculateSum(n);
+    printf("Enter array elements: ");
+    readArray(arr, n);
+
+    sum = calculateSum(arr, n);
     average = calculateAverage(sum, n);
 
-    printf("Sum= %d\n",sum);
-    printf("Average= %.2f",average);
+    printf("Sum = %d\n", sum);
+    printf("Average = %.2f\n", average);
 
 return 0;
 }
